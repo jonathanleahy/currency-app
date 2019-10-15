@@ -7,6 +7,8 @@ Currency Conversion App. Written in React
 
 ## Getting Started
 
+Clone the project: `git clone https://github.com/jonathanleahy/currency-app.git`
+
 Install the dependencies with: `npm install`
 
 Run the application with: `npm run start`

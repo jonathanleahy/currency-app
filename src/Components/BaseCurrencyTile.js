@@ -1,27 +1,24 @@
-fimport React from "react";
-import {clsCountryCodes} from "../Classes/clsCountryCodes";
-import styled from "styled-components";
+import React, { Fragment } from "react";
+import CountryTile from "./CountryTile";
 
-const Container = styled.div`
-    width: 250px;
-    display: flex;
-    position: relative;
-`
-
-class CountryFlag extends React.Component {
+class BaseCurrencyTile extends React.Component {
 
     render() {
         return (
-            <Container>
-                <img
-                    src={clsCountryCodes.flagImage(this.props.countrycode)}
-                    alt={this.props.countrycode}
-                    width={'100%'}
-                />
-            </Container>
+            <Fragment>
+                {this.props.currencies.currencies
+                    .filter(currency => currency.currency === this.props.currencies.baseCurrency)
+                    .map((item, key) => {
+                        return (
+                            <div key={key}>
+                                <CountryTile country={item} bEditMode={false}/>
+                            </div>
+                        )
+                    })}
+            </Fragment>
         );
     }
 
 }
 
-export default CountryFlag;
+export default BaseCurrencyTile;

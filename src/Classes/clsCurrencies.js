@@ -30,6 +30,11 @@ export class clsCurrencies {
 
             let data = await response.json()
 
+            /*
+
+            // This takes the resulting data, parses it and saves it into the currency
+            // class
+
             let keys = Object.keys(data.rates)
             keys.forEach(function (dateElement) {
                 let currencyKeys = Object.keys(data.rates[dateElement])
@@ -38,17 +43,15 @@ export class clsCurrencies {
                     // TODO: addRate
                 })
             })
+            */
 
             this.currencies[0].exchangeRate = Math.floor(Math.random() * 10)
             this.currencies[1].exchangeRate = Math.floor(Math.random() * 10)
             this.currencies[2].exchangeRate = Math.floor(Math.random() * 10)
             this.currencies[3].exchangeRate = Math.floor(Math.random() * 10)
-            this.currencies[4].exchangeRate = Math.floor(Math.random() * 10)
-            this.currencies[5].exchangeRate = Math.floor(Math.random() * 10)
-            this.currencies[6].exchangeRate = Math.floor(Math.random() * 10)
 
         } catch (err) {
-            console.log("Issue")
+            console.log(`"Issue${err.message}`)
         }
 
     }

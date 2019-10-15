@@ -1,6 +1,6 @@
 import {clsACurrency} from "./clsACurrency";
 
-export class Currencies {
+export class clsCurrencies {
 
     constructor() {
         this.currencies = []
@@ -40,17 +40,11 @@ export class Currencies {
             })
 
             this.currencies[0].exchangeRate = Math.floor(Math.random() * 10)
-
             this.currencies[1].exchangeRate = Math.floor(Math.random() * 10)
-
             this.currencies[2].exchangeRate = Math.floor(Math.random() * 10)
-
             this.currencies[3].exchangeRate = Math.floor(Math.random() * 10)
-
             this.currencies[4].exchangeRate = Math.floor(Math.random() * 10)
-
             this.currencies[5].exchangeRate = Math.floor(Math.random() * 10)
-
             this.currencies[6].exchangeRate = Math.floor(Math.random() * 10)
 
         } catch (err) {

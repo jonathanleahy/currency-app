@@ -1,5 +1,5 @@
 import React from "react"
-import CountryFlag from "../Classes/CountryFlag"
+import CountryFlag from "./CountryFlag"
 import styled from 'styled-components'
 import {LineSeries, XAxis, XYPlot} from "react-vis";
 
@@ -27,7 +27,6 @@ const Polaroid = styled.div`
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
         transform: translateY(2px);
     }
- 
 `
 
 const PolaroidWide = styled.div`
@@ -56,7 +55,6 @@ const PolaroidWide = styled.div`
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
         transform: translateY(2px);
     }
-   
 `
 
 const InfoBox = styled.div`
@@ -93,13 +91,13 @@ class CountryTile extends React.Component {
                 <Polaroid>
                     <InfoBoxEditing>
                         <div>
-                        {this.props.country.bShow &&
+                            {this.props.country.bShow &&
                             <img
                                 src="/eeye.png"
                                 width={'45px'}
                                 alt="display currency on home page"
                             />
-                        }
+                            }
                         </div>
                         <div>
                             {this.props.country.currency}

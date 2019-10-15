@@ -21,7 +21,7 @@ const Board = styled.div`
     flex-wrap: wrap;
 `
 
-export default class Chartline extends React.Component {
+export default class CurrencyGraphCompare extends React.Component {
     state = {
         useCanvas: false
     };

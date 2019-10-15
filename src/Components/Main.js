@@ -1,8 +1,8 @@
 import React from "react";
-import {Currencies} from "../Classes/currencies";
-import CountryTile from "../Classes/CountryTile";
+import {clsCurrencies} from "../Classes/clsCurrencies";
+import CountryTile from "./CountryTile";
 import styled from "styled-components";
-import Chartline from "./Chartline";
+import CurrencyGraphCompare from "./CurrencyGraphCompare";
 
 const Header = styled.div`
     min-height: 10vh;
@@ -53,7 +53,7 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
 
-        let newCurrencies = new Currencies()
+        let newCurrencies = new clsCurrencies()
         newCurrencies.addCurrency("CAD", true)
         newCurrencies.addCurrency("CHF", true)
         newCurrencies.addCurrency("HKD", true)
@@ -153,7 +153,6 @@ class Main extends React.Component {
                 <br/>
 
                 <Header>
-
                     <div>
 
                         {!this.state.bShowAllCurrencies &&
@@ -191,7 +190,6 @@ class Main extends React.Component {
                     </Board>
                 </div>
                 }
-
 
                 <Header>
                     <div>
@@ -239,8 +237,7 @@ class Main extends React.Component {
                 <Header>
                     Graph comparing all the live charts
                 </Header>
-
-                <Chartline/>
+                <CurrencyGraphCompare/>
 
                 <Header>
                 </Header>

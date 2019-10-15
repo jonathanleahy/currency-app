@@ -1,5 +1,5 @@
 import React from "react";
-import {clsCountryCodes} from "./CountryCodes";
+import {clsCountryCodes} from "../Classes/clsCountryCodes";
 import styled from "styled-components";
 
 const Container = styled.div`

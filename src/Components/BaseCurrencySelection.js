@@ -1,6 +1,6 @@
 import React from "react";
-import {clsCountryCodes} from "../Classes/CountryCodes";
-import CountryFlag from "../Classes/CountryFlag";
+import {clsCountryCodes} from "../Classes/clsCountryCodes";
+import CountryFlag from "./CountryFlag";
 
 class BaseCurrencySelection extends React.Component {
 

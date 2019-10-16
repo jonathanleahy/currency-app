@@ -100,7 +100,7 @@ class CountryTile extends React.Component {
                             }
                         </div>
                         <div>
-                            {this.props.country.currency}
+                            {this.props.country.title}
                         </div>
                     </InfoBoxEditing>
                 </Polaroid>
@@ -112,10 +112,10 @@ class CountryTile extends React.Component {
 
                 <PolaroidWide>
 
-                    <CountryFlag countrycode={this.props.country.currency} size={"MEDIUM"}/>
+                    <CountryFlag countrycode={this.props.country.title} size={"MEDIUM"}/>
 
                     <InfoBox>
-                        {this.props.country.currency}<br/>
+                        {this.props.country.title}<br/>
                         Value: £99.99<br/>
                         Exchange Rate: {this.props.country.exchangeRate}
                     </InfoBox>
@@ -127,29 +127,7 @@ class CountryTile extends React.Component {
                             height={100}>
                             <XAxis/>
                             <LineSeries
-                                data={[
-                                    {x: 1, y: 10},
-                                    {x: 2, y: 5},
-                                    {x: 3, y: 15},
-                                    {x: 4, y: 5},
-                                    {x: 5, y: 10},
-                                    {x: 6, y: 5},
-                                    {x: 7, y: 15},
-                                    {x: 8, y: 5},
-                                    {x: 9, y: 10},
-                                    {x: 10, y: 5},
-                                    {x: 11, y: 15},
-                                    {x: 12, y: 5},
-                                    {x: 13, y: 10},
-                                    {x: 14, y: 5},
-                                    {x: 15, y: 15},
-                                    {x: 16, y: 5},
-                                    {x: 17, y: 5},
-                                    {x: 18, y: 10},
-                                    {x: 19, y: 5},
-                                    {x: 20, y: 15},
-                                    {x: 21, y: 5}
-                                ]}/>
+                                data={this.props.country.getInReactVisFormat()}/>
                         </XYPlot>
                     </Side>
 

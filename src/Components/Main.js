@@ -1,9 +1,10 @@
 import React, {Fragment} from "react";
-import {clsCurrencies} from "../Classes/clsCurrencies";
+import {clsCurrencies2} from "../Classes/clsCurrencies2";
 import CountryTile from "./CountryTile";
 import styled from "styled-components";
 import CurrencyGraphCompare from "./CurrencyGraphCompare";
 import BaseCurrencyTile from "./BaseCurrencyTile";
+import {toast} from "react-toastify";
 
 const Header = styled.div`
     min-height: 10vh;
@@ -50,9 +51,13 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
 
-        let newCurrencies = new clsCurrencies()
+        // let newCurrencies = new clsCurrencies()
+
+        let newCurrencies = new clsCurrencies2()
+        newCurrencies.startDate ="2019-01-01"
+        newCurrencies.endDate ="2019-10-10"
+
         newCurrencies.addCurrency("GBP", true)
-        newCurrencies.addCurrency("EUR", false)
         newCurrencies.addCurrency("CAD", true)
         newCurrencies.addCurrency("CHF", true)
         newCurrencies.addCurrency("HKD", true)
@@ -61,7 +66,6 @@ class Main extends React.Component {
         newCurrencies.addCurrency("DKK", false)
         newCurrencies.addCurrency("HUF", false)
         newCurrencies.addCurrency("CZK", false)
-        newCurrencies.addCurrency("AUS", false)
         newCurrencies.addCurrency("RON", false)
         newCurrencies.addCurrency("SEK", false)
         newCurrencies.addCurrency("IDR", false)
@@ -73,7 +77,7 @@ class Main extends React.Component {
         newCurrencies.addCurrency("THB", false)
         newCurrencies.addCurrency("SGD", false)
         newCurrencies.addCurrency("PLN", false)
-        newCurrencies.addCurrency("BGM", false)
+        newCurrencies.addCurrency("BGN", false)
         newCurrencies.addCurrency("TRY", false)
         newCurrencies.addCurrency("CNY", false)
         newCurrencies.addCurrency("NOK", false)
@@ -87,6 +91,12 @@ class Main extends React.Component {
 
         newCurrencies.baseValue = "100"
         newCurrencies.baseCurrency = "GBP"
+
+        /*
+        exchangeratesapi.io doesn't process EUR, AUS correctly, so for the system EUR has been removed
+        newCurrencies.addCurrency("EUR", false)
+        newCurrencies.addCurrency("AUS", false)
+        */
 
         this.state = {
             currencies: newCurrencies,
@@ -111,23 +121,34 @@ class Main extends React.Component {
      */
     async onSelect(country) {
 
-        let currencies = this.state.currencies
+            toast.dismiss()
 
-        if (this.state.bEditingMode) {
-            const objIndex = currencies.currencies.findIndex(obj => obj.currency === country);
-            currencies.currencies[objIndex].bShow = !currencies.currencies[objIndex].bShow
-            // Only update the base currency is this is being added to the main dashboard
-            if (currencies.currencies[objIndex].bShow) {
-                currencies.baseCurrency = country
+            let newCurrencies = this.state.currencies
+
+            if (this.state.bEditingMode) {
+
+                let selectedCurrency = newCurrencies.currencies
+                    .filter(currency => currency.title === country)
+                    .reduce(function (currency) {
+                        return currency
+                    })
+
+                if (selectedCurrency.bShow) {
+                    selectedCurrency.bShow = false
+                } else {{
+                    selectedCurrency.bShow = true
+                }}
+
+            } else {
+                // if on dashboard, when a tile is clicked the make it the base currency
+                newCurrencies.baseCurrency = country
+                toast(`${country} is now the Base Currency`);
             }
-        } else {
-            // if on dashboard, when a tile is clicked the make it the
-            // base currency
-            currencies.baseCurrency = country
-        }
 
-        await currencies.getExchangeRateData()
-        this.setState({currencies: currencies})
+            await newCurrencies.getExchangeRateData()
+
+            this.setState({currencies: newCurrencies} )
+
     }
 
     /**
@@ -137,7 +158,6 @@ class Main extends React.Component {
         let bShowHide = !this.state.bEditingMode
         this.setState({bEditingMode: bShowHide})
     }
-
     render() {
 
         if (this.state.currencies.length === 0) {
@@ -154,9 +174,9 @@ class Main extends React.Component {
                 </Header>
                 <Board>
                     <BaseCurrencyTile currencies={this.state.currencies}/>
+                    Graphs Display Between: {this.state.currencies.startDate} - {this.state.currencies.endDate}
                 </Board>
                 <br/>
-
                 <Header>
                     <div>
                         {!this.state.bEditingMode &&
@@ -179,6 +199,7 @@ class Main extends React.Component {
                         </Button>
                         }
                     </div>
+
                 </Header>
 
 
@@ -215,7 +236,7 @@ class Main extends React.Component {
                     {this.state.currencies.currencies
                         .map((item, key) => {
                             return (
-                                <div onClick={() => this.onSelect(item.currency)} key={key}>
+                                <div onClick={() => this.onSelect(item.title)} key={key}>
                                     <CountryTile country={item} bEditMode={this.state.bEditingMode}/>
                                 </div>
                             )
@@ -227,10 +248,10 @@ class Main extends React.Component {
                 <Board bEdit={this.state.bEditingMode}>
                     {this.state.currencies.currencies
                         .filter(currency => currency.bShow !== this.state.bEditingMode)
-                        .filter(currency => currency.currency !== this.state.currencies.baseCurrency)
+                        .filter(currency => currency.title !== this.state.currencies.baseCurrency)
                         .map((item, key) => {
                             return (
-                                <div onClick={() => this.onSelect(item.currency)} key={key}>
+                                <div onClick={() => {this.onSelect(item.title)} } key={key}>
                                     <CountryTile country={item} bEditMode={this.state.bEditingMode}/>
                                 </div>
                             )

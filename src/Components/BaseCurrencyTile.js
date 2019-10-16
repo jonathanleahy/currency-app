@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import CountryTile from "./CountryTile";
 
 class BaseCurrencyTile extends React.Component {
@@ -7,7 +7,7 @@ class BaseCurrencyTile extends React.Component {
         return (
             <Fragment>
                 {this.props.currencies.currencies
-                    .filter(currency => currency.currency === this.props.currencies.baseCurrency)
+                    .filter(currency => currency.title === this.props.currencies.baseCurrency)
                     .map((item, key) => {
                         return (
                             <div key={key}>

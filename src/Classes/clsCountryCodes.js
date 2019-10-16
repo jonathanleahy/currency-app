@@ -7,12 +7,11 @@ export class clsCountryCodes {
             {cc3: "HKD", cc2: "HK", flag: "HK"},
             {cc3: "ISK", cc2: "IS", flag: "IS"},
             {cc3: "CHF", cc2: "CH", flag: "CH"},
-            {cc3: "EUR", cc2: "", flag: ""},
+            {cc3: "GBP", cc2: "GB", flag: "GB"},
             {cc3: "PHP", cc2: "", flag: ""},
             {cc3: "DKK", cc2: "", flag: ""},
             {cc3: "HUF", cc2: "", flag: ""},
             {cc3: "CZK", cc2: "", flag: ""},
-            {cc3: "AUS", cc2: "", flag: ""},
             {cc3: "RON", cc2: "", flag: ""},
             {cc3: "SEK", cc2: "", flag: ""},
             {cc3: "IDR", cc2: "", flag: ""},
@@ -24,7 +23,7 @@ export class clsCountryCodes {
             {cc3: "THB", cc2: "", flag: ""},
             {cc3: "SGD", cc2: "", flag: ""},
             {cc3: "PLN", cc2: "", flag: ""},
-            {cc3: "BGM", cc2: "", flag: ""},
+            {cc3: "BGN", cc2: "", flag: ""},
             {cc3: "TRY", cc2: "", flag: ""},
             {cc3: "CNY", cc2: "", flag: ""},
             {cc3: "NOK", cc2: "", flag: ""},
@@ -33,10 +32,15 @@ export class clsCountryCodes {
             {cc3: "USD", cc2: "", flag: ""},
             {cc3: "MXN", cc2: "", flag: ""},
             {cc3: "ILS", cc2: "", flag: ""},
-            {cc3: "GBP", cc2: "GB", flag: "GB"},
             {cc3: "KRW", cc2: "", flag: ""},
             {cc3: "MYR", cc2: "", flag: ""},
         ]
+
+        /*
+        exchangeratesapi.io doesn't process EUR, AUS correctly, so for the system these have been removed
+        {cc3: "EUR", cc2: "", flag: ""},
+        {cc3: "AUS", cc2: "", flag: ""},
+        */
 
         let cc3 = findCountryCode3
 

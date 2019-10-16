@@ -14,6 +14,11 @@ Install the dependencies with: `npm install`
 Run the application with: `npm run start`
 
 
+## Bugs
+
+exchangeratesapi.io doesn't process 
+    AUS, EUR correctly, so for the system EUR has been removed
+
 ## Deliverables
 
 - [x] Check the current rate of every given currency against any other currency of the user’s choice
@@ -22,13 +27,17 @@ Run the application with: `npm run start`
 
 - [x] Bonus points for any interesting visualisation features such as graphs, and clean simple UI (don’t worry too much about making it beautiful though! Clean and functional is fine)  
 
-- [ ] Live data isn't complete. 
+- [X] Live data isn't complete. 
 
   - [x] Live data is pulled from the REST API.
 
   - [x] Live data request optimised so a single call for all the selected currencies
   
-  - [ ] Live data processed and used within the app
+  - [x] Live data processed
+
+  - [X] Live data displayed as small graph
+
+  - [ ] Live data displayed as big graph
   
 - [ ] Start and End date functionally isn't implemented:
 

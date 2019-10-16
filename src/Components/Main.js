@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import {clsCurrencies2} from "../Classes/clsCurrencies2";
+import {clsCurrencies} from "../Classes/clsCurrencies";
 import CountryTile from "./CountryTile";
 import styled from "styled-components";
 import CurrencyGraphCompare from "./CurrencyGraphCompare";
@@ -51,9 +51,7 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
 
-        // let newCurrencies = new clsCurrencies()
-
-        let newCurrencies = new clsCurrencies2()
+        let newCurrencies = new clsCurrencies()
         newCurrencies.startDate ="2019-01-01"
         newCurrencies.endDate ="2019-10-10"
 
@@ -133,11 +131,7 @@ class Main extends React.Component {
                         return currency
                     })
 
-                if (selectedCurrency.bShow) {
-                    selectedCurrency.bShow = false
-                } else {{
-                    selectedCurrency.bShow = true
-                }}
+                selectedCurrency.bShow = !selectedCurrency.bShow
 
             } else {
                 // if on dashboard, when a tile is clicked the make it the base currency
@@ -158,6 +152,7 @@ class Main extends React.Component {
         let bShowHide = !this.state.bEditingMode
         this.setState({bEditingMode: bShowHide})
     }
+
     render() {
 
         if (this.state.currencies.length === 0) {
@@ -199,7 +194,6 @@ class Main extends React.Component {
                         </Button>
                         }
                     </div>
-
                 </Header>
 
 

@@ -44,7 +44,7 @@ export class clsCountryCodes {
 
         let cc3 = findCountryCode3
 
-        let country = countries.find(obj => obj.cc3 === cc3);
+        let country = countries.find(obj => obj.cc3 === cc3)
 
         if (country) {
             return `/flags/${country.flag}_100.png`
